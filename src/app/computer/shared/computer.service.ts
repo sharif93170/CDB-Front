@@ -7,11 +7,25 @@ import { Computer } from '../../shared/model/computer.model';
   providedIn: 'root'
 })
 export class ComputerService {
-  private SERVER_URL = 'http://localhost:8080/webapp/dashboard';
+  private SERVER_URL = 'http://localhost:8080/webapp/computer';
 
   constructor(private _httpClient: HttpClient) { }
 
   getComputer(): Observable<Computer[]> {
-    return this._httpClient.get<Computer[]>(this.SERVER_URL);
+    return this._httpClient.get<Computer[]>(this.SERVER_URL + '/all');
+  }
+
+  getComputerById(id: string): Observable<Computer> {
+    return this._httpClient.get<Computer>(`${this.SERVER_URL}+'/all'+/${id}`);
+  }
+  postComputer(computer: Computer): Observable<Computer> {
+    return this._httpClient.post<Computer>(this.SERVER_URL, computer);
+  }
+
+  patchComputer(computer: Computer): Observable<Computer> {
+    return this._httpClient.patch<Computer>(this.SERVER_URL, computer);
+  }
+  deleteComputerById(id: string): Observable<Computer> {
+    return this._httpClient.delete<Computer>(`${this.SERVER_URL}/${id}`);
   }
 }
