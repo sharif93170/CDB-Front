@@ -7,7 +7,7 @@ import { Computer } from '../../shared/model/computer.model';
   providedIn: 'root'
 })
 export class ComputerService {
-  private SERVER_URL = 'http://localhost:8080/webapp/computer';
+  private SERVER_URL = 'http://10.0.1.146:8080/webapp/computer';
 
   constructor(private _httpClient: HttpClient) { }
 
