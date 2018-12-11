@@ -1,16 +1,33 @@
 <div class="example-container">
-  <mat-form-field> <input matInput placeholder="Name" required="true" [(ngModel)]="computer.name"/> </mat-form-field>
-
   <mat-form-field>
-    <textarea matInput placeholder="Introduced" [(ngModel)]="computer.introduced"></textarea>
+    <input
+      matInput
+      placeholder="Name"
+      required="true"
+      [(ngModel)]="computer.name"
+    />
   </mat-form-field>
-
   <mat-form-field>
-    <textarea matInput placeholder="Discontinued" [(ngModel)]="computer.discontinued"></textarea>
+    <input
+      matInput
+      placeholder="Introduced"
+      [(ngModel)]="computer.introduced"
+    />
   </mat-form-field>
   <mat-form-field>
-    <textarea matInput placeholder="Company" [(ngModel)]="computer.company"></textarea>
+    <input
+      matInput
+      placeholder="Discontinued"
+      [(ngModel)]="computer.discontinued"
+    />
+  </mat-form-field>
+  <mat-form-field>
+    <mat-select placeholder="Company" [(ngModel)]="computer.company">
+      <mat-option *ngFor="let company of companies" [value]="company.name">
+        {{ company.name }}
+      </mat-option>
+    </mat-select>
   </mat-form-field>
 </div>
 <button mat-raised-button color="primary" (click)="create()">Create</button>
-<button mat-raised-button color="primary">Back</button>
+<button mat-raised-button color="primary" (click)="back()">Annuler</button>

@@ -22,7 +22,7 @@
   <!-- Company Column -->
   <ng-container matColumnDef="company">
     <th mat-header-cell *matHeaderCellDef> Company </th>
-    <td mat-cell *matCellDef="let computer"> {{(computer.company == null ? computer.company: computer.company.name)}} </td>
+    <td mat-cell *matCellDef="let computer"> {{computer.companyName}} </td>
   </ng-container>
 
   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>

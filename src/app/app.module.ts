@@ -9,7 +9,7 @@ import { CustomMaterialModule } from './custom-material/custom-material.module';
 import { HttpClientModule } from '@angular/common/http';
 import { ComputerModule } from './computer/computer.module';
 import { MatTableModule } from '@angular/material/table';
-import { MatPaginatorModule } from '@angular/material/paginator';
+import { CompanyModule } from './company/company.module';
 
 @NgModule({
   declarations: [
@@ -23,6 +23,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     CustomMaterialModule,
     HttpClientModule,
     ComputerModule,
+    CompanyModule,
     MatTableModule
   ],
   providers: [],

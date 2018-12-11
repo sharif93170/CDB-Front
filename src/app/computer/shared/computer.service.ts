@@ -19,7 +19,7 @@ export class ComputerService {
     return this._httpClient.get<Computer>(`${this.SERVER_URL}+'/all'+/${id}`);
   }
   postComputer(computer: Computer): Observable<Computer> {
-    return this._httpClient.post<Computer>(this.SERVER_URL, computer);
+    return this._httpClient.post<Computer>(this.SERVER_URL , computer);
   }
 
   patchComputer(computer: Computer): Observable<Computer> {

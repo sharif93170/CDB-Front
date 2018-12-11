@@ -1,3 +1,27 @@
-<p>
-  computer-edit works!
-</p>
+<form [formGroup]="computerForm" (ngSubmit)="edit()" class="example-container">
+  <mat-form-field>
+    <input matInput placeholder="Name" required="true" formControlName="name" />
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput placeholder="Introduced" formControlName="introduced" />
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput placeholder="Discontinued" formControlName="discontinued" />
+  </mat-form-field>
+  <mat-form-field>
+    <mat-select placeholder="Company" [(ngModel)]="computer.company">
+      <mat-option *ngFor="let company of companies" [value]="company.name">
+        {{ company.name }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <button
+    mat-raised-button
+    color="primary"
+    type="submit"
+    [disabled]="!computerForm.valid"
+  >
+    Edit
+  </button>
+</form>
