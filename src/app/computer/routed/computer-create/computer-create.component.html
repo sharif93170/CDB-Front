@@ -22,8 +22,8 @@
     />
   </mat-form-field>
   <mat-form-field>
-    <mat-select placeholder="Company" [(ngModel)]="computer.company">
-      <mat-option *ngFor="let company of companies" [value]="company.name">
+    <mat-select placeholder="Company" [(ngModel)]="computer.companyName">
+      <mat-option *ngFor="let company of companies" [value]="company.id">
         {{ company.name }}
       </mat-option>
     </mat-select>

@@ -16,7 +16,7 @@ export class ComputerService {
   }
 
   getComputerById(id: string): Observable<Computer> {
-    return this._httpClient.get<Computer>(`${this.SERVER_URL}+'/all'+/${id}`);
+    return this._httpClient.get<Computer>(`${this.SERVER_URL}/${id}`);
   }
   postComputer(computer: Computer): Observable<Computer> {
     return this._httpClient.post<Computer>(this.SERVER_URL , computer);

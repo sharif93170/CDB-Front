@@ -1,4 +1,3 @@
-import { Company } from './company.model';
 
 
 export class Computer {
@@ -6,7 +5,7 @@ export class Computer {
   name: string;
   introduced: string;
   discontinued: string;
-  company: Company;
+  companyName: string;
   companyId: number;
 
 }
