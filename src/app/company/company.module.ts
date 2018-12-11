@@ -4,11 +4,18 @@ import { CompanyListComponent } from './routed/company-list/company-list.compone
 import { CompanyCreateComponent } from './routed/company-create/company-create.component';
 import { CompanyEditComponent } from './routed/company-edit/company-edit.component';
 import { CompanyDashboardComponent } from './routed/company-dashboard/company-dashboard.component';
+import { CustomMaterialModule } from '../custom-material/custom-material.module';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [CompanyListComponent, CompanyCreateComponent, CompanyEditComponent, CompanyDashboardComponent],
   imports: [
-    CommonModule
+    CommonModule,
+    CustomMaterialModule,
+    RouterModule,
+    FormsModule,
+    ReactiveFormsModule
   ]
 })
 export class CompanyModule { }
