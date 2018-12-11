@@ -4,11 +4,18 @@ import { ComputerDashboardComponent } from './routed/computer-dashboard/computer
 import { ComputerListComponent } from './routed/computer-list/computer-list.component';
 import { ComputerEditComponent } from './routed/computer-edit/computer-edit.component';
 import { ComputerCreateComponent } from './routed/computer-create/computer-create.component';
+import { CustomMaterialModule } from '../custom-material/custom-material.module';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [ComputerDashboardComponent, ComputerListComponent, ComputerEditComponent, ComputerCreateComponent],
   imports: [
-    CommonModule
+    CommonModule,
+    CustomMaterialModule,
+    RouterModule,
+    FormsModule,
+    ReactiveFormsModule
   ]
 })
 export class ComputerModule { }

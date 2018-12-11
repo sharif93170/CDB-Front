@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Computer } from 'src/app/shared/model/computer.model';
+import { ComputerService } from '../../shared/computer.service';
 
 @Component({
   selector: 'app-computer-list',
@@ -7,9 +9,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ComputerListComponent implements OnInit {
 
-  constructor() { }
+
+  constructor(private _computerService: ComputerService ) { }
 
   ngOnInit() {
+
   }
 
 }

@@ -6,6 +6,10 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HeaderComponent } from './header/header.component';
 import { CustomMaterialModule } from './custom-material/custom-material.module';
+import { HttpClientModule } from '@angular/common/http';
+import { ComputerModule } from './computer/computer.module';
+import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 @NgModule({
   declarations: [
@@ -16,7 +20,10 @@ import { CustomMaterialModule } from './custom-material/custom-material.module';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    CustomMaterialModule
+    CustomMaterialModule,
+    HttpClientModule,
+    ComputerModule,
+    MatTableModule
   ],
   providers: [],
   bootstrap: [AppComponent]

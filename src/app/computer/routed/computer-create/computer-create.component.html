@@ -1,3 +1,16 @@
-<p>
-  computer-create works!
-</p>
+<div class="example-container">
+  <mat-form-field> <input matInput placeholder="Name" required="true" [(ngModel)]="computer.name"/> </mat-form-field>
+
+  <mat-form-field>
+    <textarea matInput placeholder="Introduced" [(ngModel)]="computer.introduced"></textarea>
+  </mat-form-field>
+
+  <mat-form-field>
+    <textarea matInput placeholder="Discontinued" [(ngModel)]="computer.discontinued"></textarea>
+  </mat-form-field>
+  <mat-form-field>
+    <textarea matInput placeholder="Company" [(ngModel)]="computer.company"></textarea>
+  </mat-form-field>
+</div>
+<button mat-raised-button color="primary" (click)="create()">Create</button>
+<button mat-raised-button color="primary">Back</button>

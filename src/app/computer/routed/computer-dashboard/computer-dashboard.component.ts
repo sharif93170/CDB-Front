@@ -1,4 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ViewChild, Input, OnInit } from '@angular/core';
+import { Computer } from 'src/app/shared/model/computer.model';
+import { ComputerService } from '../../shared/computer.service';
+import { MatTableDataSource } from '@angular/material/table';
+import { MatPaginator } from '@angular/material/paginator';
 
 @Component({
   selector: 'app-computer-dashboard',
@@ -7,9 +11,30 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ComputerDashboardComponent implements OnInit {
 
-  constructor() { }
+
+  @Input()
+  dataSource;
+  computers: Computer[];
+
+  displayedColumns = ['name', 'introduced', 'discontinued', 'company'];
+
+  @ViewChild(MatPaginator) paginator: MatPaginator;
+
+  constructor(private _computerService: ComputerService) { }
 
   ngOnInit() {
+
+    this._computerService
+      .getComputer()
+      .subscribe(
+        computers => {
+          this.computers = computers;
+          this.dataSource = new MatTableDataSource(this.computers);
+          this.dataSource.paginator = this.paginator;
+          console.log('got datasource object', this.dataSource);
+        }
+      );
+
   }
 
 }
