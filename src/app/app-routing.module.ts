@@ -4,6 +4,7 @@ import { ComputerCreateComponent } from './computer/routed/computer-create/compu
 import { ComputerDashboardComponent } from './computer/routed/computer-dashboard/computer-dashboard.component';
 import { ComputerEditComponent } from './computer/routed/computer-edit/computer-edit.component';
 import { CompanyDashboardComponent } from './company/routed/company-dashboard/company-dashboard.component';
+import { UserLoginComponent } from './user/routed/user-login/user-login.component';
 
 const routes: Routes = [
   {
@@ -21,7 +22,12 @@ const routes: Routes = [
   {
     path: 'dashboard/computer/edit/:id',
     component: ComputerEditComponent
+  },
+  {
+    path: 'login',
+    component: UserLoginComponent
   }
+
 
 
 ];

@@ -10,6 +10,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { ComputerModule } from './computer/computer.module';
 import { MatTableModule } from '@angular/material/table';
 import { CompanyModule } from './company/company.module';
+import { UserModule } from './user/user.module';
+
 
 @NgModule({
   declarations: [
@@ -24,7 +26,8 @@ import { CompanyModule } from './company/company.module';
     HttpClientModule,
     ComputerModule,
     CompanyModule,
-    MatTableModule
+    MatTableModule,
+    UserModule
   ],
   providers: [],
   bootstrap: [AppComponent]
