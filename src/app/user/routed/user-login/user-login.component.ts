@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
 import { first } from 'rxjs/operators';
 import { AuthenticationService } from '../_service';
 
@@ -12,7 +12,10 @@ import { AuthenticationService } from '../_service';
 })
 
 export class UserLoginComponent implements OnInit {
-    loginForm: FormGroup;
+    loginForm = this.formBuilder.group({
+      username: ['', Validators.required],
+      password: ['', Validators.required]
+  });
     loading = false;
     submitted = false;
     returnUrl: string;
@@ -25,10 +28,7 @@ export class UserLoginComponent implements OnInit {
         private authenticationService: AuthenticationService) {}
 
     ngOnInit() {
-        this.loginForm = this.formBuilder.group({
-            username: ['', Validators.required],
-            password: ['', Validators.required]
-        });
+
 
         // reset login status
         this.authenticationService.logout();

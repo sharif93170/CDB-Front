@@ -14,4 +14,17 @@ export class CompanyService {
   getCompany(): Observable<Company[]> {
     return this._httpClient.get<Company[]>(this.SERVER_URL + '/all');
   }
+  getCompanyById(id: string): Observable<Company> {
+    return this._httpClient.get<Company>(`${this.SERVER_URL}/${id}`);
+  }
+  postCompany(company: Company): Observable<Company> {
+    return this._httpClient.post<Company>(this.SERVER_URL , company);
+  }
+
+  patchCompany(company: Company): Observable<Company> {
+    return this._httpClient.patch<Company>(this.SERVER_URL, company);
+  }
+  deleteCompanyById(id: string): Observable<Company> {
+    return this._httpClient.delete<Company>(`${this.SERVER_URL}/${id}`);
+  }
 }

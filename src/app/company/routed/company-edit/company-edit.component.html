@@ -1,3 +1,15 @@
-<p>
-  company-edit works!
-</p>
+<form [formGroup]="companyForm" (ngSubmit)="edit()" class="example-container">
+  <mat-form-field>
+    <input matInput placeholder="Name" required="true" formControlName="name" />
+  </mat-form-field>
+
+
+  <button
+    mat-raised-button
+    color="primary"
+    type="submit"
+    [disabled]="!companyForm.valid"
+  >
+    Edit
+  </button>
+</form>
