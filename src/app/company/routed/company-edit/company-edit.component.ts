@@ -23,15 +23,15 @@ export class CompanyEditComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-
+    this.company = new Company();
     this._companyService
       .getCompanyById(this._route.snapshot.paramMap.get('id'))
       .subscribe(
-        computer => {
+        company => {
+          this.company = company;
           this.companyForm.patchValue({
             name: this.company.name
           });
-          console.log('got computer object', this.company);
         },
 
         error => console.log(error)
@@ -40,9 +40,8 @@ export class CompanyEditComponent implements OnInit {
 
   edit() {
     this.company.name = this.companyForm.get('name').value;
-    console.log('got computer postform object', this.company);
     this._companyService
       .patchCompany(this.company)
-      .subscribe(() => this._router.navigate['/dashboard/company']);
+      .subscribe(() => this._router.navigate(['/dashboard/company']));
   }
 }

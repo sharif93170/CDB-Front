@@ -64,6 +64,6 @@ export class ComputerEditComponent implements OnInit {
     console.log('got computer postform object', this.computer);
     this._computerService
       .patchComputer(this.computer)
-      .subscribe(() => this._router.navigate['/dashboard/computer']);
+      .subscribe(() => this._router.navigate(['/dashboard/computer']));
   }
 }

@@ -15,6 +15,7 @@ export class ComputerDashboardComponent implements OnInit {
   @Input()
   dataSource;
   computers: Computer[];
+  length: number;
 
   displayedColumns = ['name', 'introduced', 'discontinued', 'company'];
 
@@ -31,6 +32,7 @@ export class ComputerDashboardComponent implements OnInit {
           this.computers = computers;
           this.dataSource = new MatTableDataSource(this.computers);
           this.dataSource.paginator = this.paginator;
+          this.length = this.computers.length;
           console.log('got datasource object', this.dataSource);
         }
       );

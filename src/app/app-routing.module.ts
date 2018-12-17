@@ -5,6 +5,8 @@ import { ComputerDashboardComponent } from './computer/routed/computer-dashboard
 import { ComputerEditComponent } from './computer/routed/computer-edit/computer-edit.component';
 import { CompanyDashboardComponent } from './company/routed/company-dashboard/company-dashboard.component';
 import { UserLoginComponent } from './user/routed/user-login/user-login.component';
+import { CompanyEditComponent } from './company/routed/company-edit/company-edit.component';
+import { CompanyCreateComponent } from './company/routed/company-create/company-create.component';
 
 const routes: Routes = [
   {
@@ -18,6 +20,14 @@ const routes: Routes = [
   {
     path: 'dashboard/computer/create',
     component: ComputerCreateComponent
+  },
+  {
+    path: 'dashboard/company/create',
+    component: CompanyCreateComponent
+  },
+  {
+    path: 'dashboard/company/edit/:id',
+    component: CompanyEditComponent
   },
   {
     path: 'dashboard/computer/edit/:id',
