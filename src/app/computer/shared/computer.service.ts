@@ -33,6 +33,10 @@ export class ComputerService {
   }
 
   search(name: string): Observable<Computer[]> {
-    return this._httpClient.get<Computer[]>(`${this.SERVER_URL + '/all' }+/${name}`);
+    return this._httpClient.get<Computer[]>(`${this.SERVER_URL + '/all' }/${name}`);
+  }
+
+  getSearchCountComputer(name: string): Observable<Computer> {
+    return this._httpClient.get<Computer>(`${this.SERVER_URL + '/count'}/${name}`);
   }
 }

@@ -19,10 +19,7 @@ export class UserListComponent implements OnInit {
       this.router.navigate(['login']);
       return;
     }
-    this.userService.getUsers()
-      .subscribe( data => {
-          this.users = data.result;
-      });
+
   }
 
   deleteUser(user: User): void {

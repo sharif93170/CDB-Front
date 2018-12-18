@@ -54,7 +54,6 @@ export class ComputerDashboardComponent implements OnInit {
       this.dataSource = new MatTableDataSource(this.computers);
       this.dataSource.paginator = this.paginator;
       this.length = this.computers.length;
-      console.log('got datasource object', this.dataSource);
     });
     this._computerService.getCountComputer().subscribe(computer => {
       this.computerCount = computer;
@@ -62,7 +61,6 @@ export class ComputerDashboardComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.name = '';
     this.refresh();
   }
 
@@ -71,17 +69,21 @@ export class ComputerDashboardComponent implements OnInit {
   }
 
   search() {
-    this._computerService.search(name).subscribe(computers => {
+    console.log(this.name);
+    this._computerService.search(this.name).subscribe(computers => {
+      console.log('Search datasource', this.computers);
       this.computers = computers;
       this.dataSource = new MatTableDataSource(this.computers);
       this.dataSource.paginator = this.paginator;
-      console.log('got datasource search', this.dataSource);
+      this.length = this.computers.length;
+    });
+    this._computerService.getSearchCountComputer(this.name).subscribe(computer => {
+      this.computerCount = computer;
     });
   }
 
   delete(id: number) {
     this._computerService.deleteComputerById(id.toString()).subscribe(() => {
-     // this.deleted.emit(this.computer)
      this.refresh();
     });
   }
