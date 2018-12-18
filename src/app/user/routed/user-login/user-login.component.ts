@@ -1,63 +1,55 @@
-import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { FormBuilder, Validators } from '@angular/forms';
-import { first } from 'rxjs/operators';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthenticationService } from '../_service';
-
+import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+import { url } from 'inspector';
+import {  HttpClient } from '@angular/common/http';
 
 @Component({
-  selector: 'app-user-login',
   templateUrl: './user-login.component.html',
+  selector: 'app-user-login',
   styleUrls: ['./user-login.component.scss']
 })
-
 export class UserLoginComponent implements OnInit {
-    loginForm = this.formBuilder.group({
-      username: ['', Validators.required],
-      password: ['', Validators.required]
-  });
+  loginForm: FormGroup;
     loading = false;
     submitted = false;
     returnUrl: string;
-    error = '';
+    model: any = {};
 
     constructor(
         private formBuilder: FormBuilder,
         private route: ActivatedRoute,
         private router: Router,
-        private authenticationService: AuthenticationService) {}
+        private authenticationService: AuthenticationService,
+        private http: HttpClient
+    ) {
+        // redirect to home if already logged in
+        if (this.authenticationService.currentUserValue) {
+            this.router.navigate(['/']);
+        }
+    }
 
     ngOnInit() {
+      sessionStorage.setItem('token', '');
+  }
 
-
-        // reset login status
-        this.authenticationService.logout();
-
-        // get return url from route parameters or default to '/'
-        this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
-    }
-
-    // convenience getter for easy access to form fields
-    get f() { return this.loginForm.controls; }
-
-    onSubmit() {
-        this.submitted = true;
-
-        // stop here if form is invalid
-        if (this.loginForm.invalid) {
-            return;
+  login() {
+      this.http.post<Observable<boolean>>('http://10.0.1.146:8080/webapp/login' , {
+        userName: this.model.username,
+        password: this.model.password
+    }).subscribe(isValid => {
+        if (isValid) {
+            sessionStorage.setItem(
+              'token',
+              btoa(this.model.username + ':' + this.model.password)
+            );
+        this.router.navigate(['/dashboard/computer']);
+        } else {
+            alert('Authentication failed.');
         }
+    });
 
-        this.loading = true;
-        this.authenticationService.login(this.f.username.value, this.f.password.value)
-            .pipe(first())
-            .subscribe(
-                data => {
-                    this.router.navigate([this.returnUrl]);
-                },
-                error => {
-                    this.error = error;
-                    this.loading = false;
-                });
-    }
+  }
 }

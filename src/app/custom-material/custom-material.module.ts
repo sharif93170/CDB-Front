@@ -31,7 +31,8 @@ import {MatNativeDateModule} from '@angular/material';
     MatSelectModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    MatDatepickerModule
+    MatDatepickerModule,
+    MatInputModule
   ],
   exports: [
     MatToolbarModule,
@@ -46,7 +47,8 @@ import {MatNativeDateModule} from '@angular/material';
     MatSelectModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    MatDatepickerModule
+    MatDatepickerModule,
+    MatInputModule
    ]
 })
 export class CustomMaterialModule { }

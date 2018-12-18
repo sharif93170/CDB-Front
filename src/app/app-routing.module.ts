@@ -4,9 +4,10 @@ import { ComputerCreateComponent } from './computer/routed/computer-create/compu
 import { ComputerDashboardComponent } from './computer/routed/computer-dashboard/computer-dashboard.component';
 import { ComputerEditComponent } from './computer/routed/computer-edit/computer-edit.component';
 import { CompanyDashboardComponent } from './company/routed/company-dashboard/company-dashboard.component';
-import { UserLoginComponent } from './user/routed/user-login/user-login.component';
 import { CompanyEditComponent } from './company/routed/company-edit/company-edit.component';
 import { CompanyCreateComponent } from './company/routed/company-create/company-create.component';
+import { UserLoginComponent } from './user/routed/user-login/user-login.component';
+import { UserCreateComponent } from './user/routed/user-create/user-create.component';
 
 const routes: Routes = [
   {
@@ -36,6 +37,10 @@ const routes: Routes = [
   {
     path: 'login',
     component: UserLoginComponent
+  },
+  {
+    path: 'register',
+    component: UserCreateComponent
   }
 
 

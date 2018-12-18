@@ -66,4 +66,7 @@ export class ComputerEditComponent implements OnInit {
       .patchComputer(this.computer)
       .subscribe(() => this._router.navigate(['/dashboard/computer']));
   }
+  back() {
+    this._router.navigate(['/dashboard/computer']);
+  }
 }

@@ -1,8 +1,17 @@
-import { Component, ViewChild, Input, OnInit } from '@angular/core';
+import {
+  Component,
+  ViewChild,
+  Input,
+  OnInit,
+  Output,
+  EventEmitter
+} from '@angular/core';
 import { Computer } from 'src/app/shared/model/computer.model';
 import { ComputerService } from '../../shared/computer.service';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
+import { Router, ActivatedRoute } from '@angular/router';
+import { FormBuilder, FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-computer-dashboard',
@@ -10,33 +19,70 @@ import { MatPaginator } from '@angular/material/paginator';
   styleUrls: ['./computer-dashboard.component.scss']
 })
 export class ComputerDashboardComponent implements OnInit {
-
-
   @Input()
   dataSource;
   computers: Computer[];
+  computer: Computer;
+  computerCount: Computer;
   length: number;
+  name: any;
 
-  displayedColumns = ['name', 'introduced', 'discontinued', 'company'];
+  displayedColumns = [
+    'name',
+    'introduced',
+    'discontinued',
+    'company',
+    'delete'
+  ];
+
+  computerNameForm = this._fb.group({
+    name: new FormControl('')
+  });
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
-  constructor(private _computerService: ComputerService) { }
+  constructor(
+    private _computerService: ComputerService,
+    private _router: Router,
+    private _route: ActivatedRoute,
+    private _fb: FormBuilder
+  ) {}
 
-  ngOnInit() {
-
-    this._computerService
-      .getComputer()
-      .subscribe(
-        computers => {
-          this.computers = computers;
-          this.dataSource = new MatTableDataSource(this.computers);
-          this.dataSource.paginator = this.paginator;
-          this.length = this.computers.length;
-          console.log('got datasource object', this.dataSource);
-        }
-      );
-
+  refresh() {
+    this._computerService.getComputer().subscribe(computers => {
+      this.computers = computers;
+      this.dataSource = new MatTableDataSource(this.computers);
+      this.dataSource.paginator = this.paginator;
+      this.length = this.computers.length;
+      console.log('got datasource object', this.dataSource);
+    });
+    this._computerService.getCountComputer().subscribe(computer => {
+      this.computerCount = computer;
+    });
   }
 
+  ngOnInit() {
+    this.name = '';
+    this.refresh();
+  }
+
+  editRedirect(id: number) {
+    this._router.navigate(['dashboard/computer/edit/' + id]);
+  }
+
+  search() {
+    this._computerService.search(name).subscribe(computers => {
+      this.computers = computers;
+      this.dataSource = new MatTableDataSource(this.computers);
+      this.dataSource.paginator = this.paginator;
+      console.log('got datasource search', this.dataSource);
+    });
+  }
+
+  delete(id: number) {
+    this._computerService.deleteComputerById(id.toString()).subscribe(() => {
+     // this.deleted.emit(this.computer)
+     this.refresh();
+    });
+  }
 }

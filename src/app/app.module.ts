@@ -11,6 +11,7 @@ import { ComputerModule } from './computer/computer.module';
 import { MatTableModule } from '@angular/material/table';
 import { CompanyModule } from './company/company.module';
 import { UserModule } from './user/user.module';
+import { MatInputModule } from '@angular/material';
 
 
 @NgModule({
@@ -27,7 +28,8 @@ import { UserModule } from './user/user.module';
     ComputerModule,
     CompanyModule,
     MatTableModule,
-    UserModule
+    UserModule,
+    MatInputModule
   ],
   providers: [],
   bootstrap: [AppComponent]

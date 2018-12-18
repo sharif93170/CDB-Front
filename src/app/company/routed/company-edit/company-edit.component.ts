@@ -44,4 +44,8 @@ export class CompanyEditComponent implements OnInit {
       .patchCompany(this.company)
       .subscribe(() => this._router.navigate(['/dashboard/company']));
   }
+
+  back() {
+    this._router.navigate(['/dashboard/company']);
+  }
 }

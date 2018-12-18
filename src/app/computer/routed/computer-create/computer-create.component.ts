@@ -15,7 +15,6 @@ export class ComputerCreateComponent implements OnInit {
 
   computer: Computer;
   companies: Company[];
-  date = new FormControl(new Date());
   constructor(private _computerService: ComputerService, private _router: Router, private _companyService: CompanyService) { }
 
   ngOnInit() {
