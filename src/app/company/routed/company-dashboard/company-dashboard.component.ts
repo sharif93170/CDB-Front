@@ -4,6 +4,7 @@ import { CompanyService } from '../../shared/company.service';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { Router } from '@angular/router';
+import { MatSort } from '@angular/material';
 
 @Component({
   selector: 'app-company-dashboard',
@@ -19,6 +20,8 @@ export class CompanyDashboardComponent implements OnInit {
   displayedColumns = ['name', 'delete'];
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
+  @ViewChild(MatSort) sort: MatSort;
+
 
   constructor(private _companyService: CompanyService, private _router: Router) { }
 
@@ -30,10 +33,13 @@ export class CompanyDashboardComponent implements OnInit {
         this.companies = companies;
         this.dataSource = new MatTableDataSource(this.companies);
         this.dataSource.paginator = this.paginator;
+        this.dataSource.sort = this.sort;
         console.log('got datasource object', this.dataSource);
       }
     );
   }
+
+
 
   ngOnInit() {
     this.refresh();

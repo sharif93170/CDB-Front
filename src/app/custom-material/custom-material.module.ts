@@ -11,7 +11,7 @@ import {MatPaginatorModule } from '@angular/material/paginator';
 import { MatOptionModule } from '@angular/material/core';
 import {MatSelectModule} from '@angular/material/select';
 import {MatDatepickerModule} from '@angular/material/datepicker';
-import {MatNativeDateModule} from '@angular/material';
+import {MatNativeDateModule, MatCheckboxModule, MatSortModule} from '@angular/material';
 
 
 
@@ -32,7 +32,9 @@ import {MatNativeDateModule} from '@angular/material';
     MatDatepickerModule,
     MatNativeDateModule,
     MatDatepickerModule,
-    MatInputModule
+    MatInputModule,
+    MatCheckboxModule,
+    MatSortModule
   ],
   exports: [
     MatToolbarModule,
@@ -48,7 +50,9 @@ import {MatNativeDateModule} from '@angular/material';
     MatDatepickerModule,
     MatNativeDateModule,
     MatDatepickerModule,
-    MatInputModule
+    MatInputModule,
+    MatCheckboxModule,
+    MatSortModule
    ]
 })
 export class CustomMaterialModule { }

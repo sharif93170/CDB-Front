@@ -2,18 +2,13 @@
   <button class="ml-1" mat-raised-button color="primary" [routerLink]="[ '/dashboard/computer' ]" routerLinkActive="router-link-active">
     Computer
   </button>
-  <button class="ml-1" mat-raised-button color="primary" [routerLink]="[ '/dashboard/company' ]" routerLinkActive="router-link-active">
+  <button class="ml-1" mat-raised-button color="primary" *ngIf="checked" name="name" [routerLink]="[ '/dashboard/company' ]" routerLinkActive="router-link-active">
     Company
   </button>
-  <button class="ml-1" mat-raised-button color="primary" [routerLink]="[ '/login' ]" routerLinkActive="router-link-active">
+  <button class="topcorner" class="ml-1" mat-raised-button color="primary" [routerLink]="[ '/login' ]" routerLinkActive="router-link-active">
     Logout
   </button>
+  <mat-checkbox class="ml-1" [(ngModel)]="device"
+  (change)="onChange($event)" [checked]="checked"> {{device}} </mat-checkbox>
 </mat-toolbar>
-<!--
-<mat-form-field class="example-form-field">
-    <input matInput type="text" placeholder="Clearable input" [(ngModel)]="value">
-    <button mat-button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
-      <mat-icon>close</mat-icon>
-    </button>
-</mat-form-field>
--->
+

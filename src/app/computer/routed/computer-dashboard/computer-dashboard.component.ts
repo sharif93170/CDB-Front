@@ -12,6 +12,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormControl } from '@angular/forms';
+import { MatSort } from '@angular/material';
 
 @Component({
   selector: 'app-computer-dashboard',
@@ -40,6 +41,7 @@ export class ComputerDashboardComponent implements OnInit {
   });
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
+  @ViewChild(MatSort) sort: MatSort;
 
   constructor(
     private _computerService: ComputerService,
@@ -53,6 +55,7 @@ export class ComputerDashboardComponent implements OnInit {
       this.computers = computers;
       this.dataSource = new MatTableDataSource(this.computers);
       this.dataSource.paginator = this.paginator;
+      this.dataSource.sort = this.sort;
       this.length = this.computers.length;
     });
     this._computerService.getCountComputer().subscribe(computer => {

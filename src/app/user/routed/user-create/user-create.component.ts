@@ -39,16 +39,7 @@ export class UserCreateComponent implements OnInit {
             return;
         }
 
-        this.loading = true;
-        this.userService.register(this.registerForm.value)
-            .pipe(first())
-            .subscribe(
-                data => {
-                    this.router.navigate(['/login']);
-                },
-                error => {
-                    this.loading = false;
-                });
+
     }
 
 }

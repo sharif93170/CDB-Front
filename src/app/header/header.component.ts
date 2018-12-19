@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output } from '@angular/core';
+import { EventEmitter } from 'events';
+import { MatSlideToggleChange } from '@angular/material';
 
 @Component({
   selector: 'app-header',
@@ -7,11 +9,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
-  value: String = '';
+  checked = false;
+  device: String;
 
   constructor() { }
 
   ngOnInit() {
+    this.device = 'User mode';
   }
 
+
+  onChange(value) {
+    if (value.checked === true) {
+      this.device = 'Admin mode';
+      this.checked = !this.checked;
+    } else {
+      this.device = 'User mode';
+      this.checked = !this.checked;
+    }
+}
 }

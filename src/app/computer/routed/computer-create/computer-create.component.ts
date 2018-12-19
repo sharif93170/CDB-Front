@@ -4,7 +4,6 @@ import { ComputerService } from '../../shared/computer.service';
 import { Router } from '@angular/router';
 import { Company } from 'src/app/shared/model/company.model';
 import { CompanyService } from 'src/app/company/shared/company.service';
-import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-computer-create',
@@ -36,6 +35,15 @@ export class ComputerCreateComponent implements OnInit {
 
   back() {
     this._router.navigate(['/dashboard/computer']);
+  }
+  dateValidator(): boolean {
+
+    if (this.computer.introduced !== null &&
+     this.computer.discontinued !== null &&
+      new Date(this.computer.introduced) > new Date(this.computer.discontinued) ) {
+      return true;
+    }
+    return false;
   }
 
 }
