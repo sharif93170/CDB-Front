@@ -61,7 +61,6 @@ export class ComputerEditComponent implements OnInit {
     this.computer.discontinued = this.computerForm.get('discontinued').value;
     this.computer.companyName = this.computerForm.get('companyName').value;
     this.computer.companyId = this.computerForm.get('companyId').value;
-    console.log('got computer postform object', this.computer);
     this._computerService
       .patchComputer(this.computer)
       .subscribe(() => this._router.navigate(['/dashboard/computer']));

@@ -1,5 +1,5 @@
 <div class="example-container">
-  <mat-form-field>
+  <mat-form-field class="example-container">
     <input
       matInput
       placeholder="Name"
@@ -7,7 +7,7 @@
       [(ngModel)]="company.name"
     />
   </mat-form-field>
-
+  <button mat-raised-button color="primary" (click)="create()">Create</button>
+  <button mat-raised-button color="primary" (click)="back()">Annuler</button>
 </div>
-<button mat-raised-button color="primary" (click)="create()">Create</button>
-<button mat-raised-button color="primary" (click)="back()">Annuler</button>
+

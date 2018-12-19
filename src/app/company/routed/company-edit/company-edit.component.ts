@@ -40,6 +40,7 @@ export class CompanyEditComponent implements OnInit {
 
   edit() {
     this.company.name = this.companyForm.get('name').value;
+    console.log(this.company);
     this._companyService
       .patchCompany(this.company)
       .subscribe(() => this._router.navigate(['/dashboard/company']));

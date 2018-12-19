@@ -10,8 +10,8 @@
     <input matInput placeholder="Discontinued" formControlName="discontinued" />
   </mat-form-field>
   <mat-form-field>
-    <mat-select placeholder="Company" formControlName="companyName">
-      <mat-option *ngFor="let company of companies" [value]="company.name">
+    <mat-select placeholder="Company" formControlName="companyId">
+      <mat-option *ngFor="let company of companies" [value]="company.id">
         {{ company.name }}
       </mat-option>
     </mat-select>

@@ -1,5 +1,5 @@
 <div class="example-container">
-<form [formGroup]="companyForm" (ngSubmit)="edit()" >
+<form [formGroup]="companyForm" (ngSubmit)="edit()" class="example-container">
   <mat-form-field>
     <input matInput placeholder="Name" required="true" formControlName="name" />
   </mat-form-field>
@@ -13,6 +13,6 @@
     Edit
   </button>
 
-  <button mat-raised-button color="primary" (click)="back()">Annuler</button>
+  <button mat-raised-button  color="primary" (click)="back()">Annuler</button>
 </form>
 </div>
